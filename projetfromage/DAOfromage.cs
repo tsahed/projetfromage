@@ -6,31 +6,46 @@ namespace projetfromage
 {
     class DAOFromage
     {
-        public void insert(int id, string pays_origine, string nom, string creation, string image)
+        #region Attributs
+        private fromage _unfromage;
+        private dbal _dbal;
+        private DAOpays _DAOpays;
+        #endregion
+
+        #region Constructeurs
+        public void DaoFromage(dbal dbal, DAOpays DAOpays)
         {
-            dbal insert = new dbal();
+            _dbal = dbal;
+            _DAOpays = DAOpays;
+        }
+        #endregion
+
+        #region Autres méthodes
+        public void insert(fromage unfromage)
+        {
             string FromageInsert;
 
-            FromageInsert = ("Insert into fromage(id, pays_origine, nom, creation, image) values(" + id + "," + pays_origine + "," + nom + "," + creation + "," + image + ");");
+            FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine + "," + unfromage.Nom + "," + unfromage.Creation + "," + unfromage.Image + ")");
             insert.Insert(FromageInsert);
         }
 
-        public void delete(int id)
+        public void delete(fromage unfromage)
         {
             dbal delete = new dbal();
             string FromageDelete;
 
-            FromageDelete = ("Delete from pays where id ='" + id + "';");
+            FromageDelete = ("Delete from pays where id ='" + unfromage.Id + "';");
             delete.Delete(FromageDelete);
         }
 
-        public void update(int id, string pays_origine, string nom, string creation, string image)
+        public void update(fromage unfromage)
         {
             dbal update = new dbal();
             string FromageUpdate;
 
-            FromageUpdate = ("update pays set id ='" + id + "', pays_origine = '" + pays_origine + "' , nom = '" + nom + "', creation = '" + creation + "', image = '" + image +"';");
+            FromageUpdate = ("update pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine + "' , nom = '" + unfromage.Nom + "', creation = '" + unfromage.Creation + "', image = '" + unfromage.Image + "';");
             update.Update(FromageUpdate);
         }
-    }
+    } 
+    #endregion
 }
