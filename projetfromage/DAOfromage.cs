@@ -26,25 +26,23 @@ namespace projetfromage
             string FromageInsert;
 
             FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine + "," + unfromage.Nom + "," + unfromage.Creation + "," + unfromage.Image + ")");
-            insert.Insert(FromageInsert);
+            _dbal.Insert(FromageInsert);
         }
 
         public void delete(fromage unfromage)
         {
-            dbal delete = new dbal();
             string FromageDelete;
 
             FromageDelete = ("Delete from pays where id ='" + unfromage.Id + "';");
-            delete.Delete(FromageDelete);
+            _dbal.Delete(FromageDelete);
         }
 
         public void update(fromage unfromage)
         {
-            dbal update = new dbal();
             string FromageUpdate;
 
             FromageUpdate = ("update pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine + "' , nom = '" + unfromage.Nom + "', creation = '" + unfromage.Creation + "', image = '" + unfromage.Image + "';");
-            update.Update(FromageUpdate);
+            _dbal.Update(FromageUpdate);
         }
     } 
     #endregion
