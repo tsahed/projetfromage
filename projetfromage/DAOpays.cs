@@ -8,7 +8,6 @@ namespace projetfromage
     class DAOpays
     {
         #region Attributs
-        private DAOpays _DAOpays;
         private dbal _dbal;
         #endregion
 
@@ -22,7 +21,7 @@ namespace projetfromage
         {
             string PaysInsert;
 
-            PaysInsert = ("Insert into pays(id, nom) values(" + unpays.Id + "," + unpays.Nom + ");");
+            PaysInsert = ("pays(id, nom) values(" + unpays.Id + "," + unpays.Nom +")");
             _dbal.Insert(PaysInsert);
         }
 
@@ -30,7 +29,7 @@ namespace projetfromage
         {
             string PaysDelete;
 
-            PaysDelete = ("Delete from pays where id ='" + unpays.Id + "';");
+            PaysDelete = ("pays where id ='" + unpays.Id +"'");
             _dbal.Delete(PaysDelete);
         }
 
@@ -38,7 +37,7 @@ namespace projetfromage
         {
             string PaysUpdate;
 
-            PaysUpdate = ("update pays set id ='" + unpays.Id + "' , nom = '" + unpays.Nom + "';");
+            PaysUpdate = ("pays set id ='" + unpays.Id + "' , nom = '" + unpays.Nom + "'");
             _dbal.Update(PaysUpdate);
         }
     } 

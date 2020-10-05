@@ -7,7 +7,6 @@ namespace projetfromage
     class DAOFromage
     {
         #region Attributs
-        private fromage _unfromage;
         private dbal _dbal;
         private DAOpays _DAOpays;
         #endregion
@@ -25,7 +24,7 @@ namespace projetfromage
         {
             string FromageInsert;
 
-            FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine + "," + unfromage.Nom + "," + unfromage.Creation + "," + unfromage.Image + ")");
+            FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine + "," + unfromage.Nom + "," + unfromage.Creation + "," + unfromage.Image +")");
             _dbal.Insert(FromageInsert);
         }
 
@@ -33,7 +32,7 @@ namespace projetfromage
         {
             string FromageDelete;
 
-            FromageDelete = ("Delete from pays where id ='" + unfromage.Id + "';");
+            FromageDelete = ("pays where id ='" + unfromage.Id +"'");
             _dbal.Delete(FromageDelete);
         }
 
@@ -41,7 +40,7 @@ namespace projetfromage
         {
             string FromageUpdate;
 
-            FromageUpdate = ("update pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine + "' , nom = '" + unfromage.Nom + "', creation = '" + unfromage.Creation + "', image = '" + unfromage.Image + "';");
+            FromageUpdate = ("pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine + "' , nom = '" + unfromage.Nom + "', creation = '" + unfromage.Creation + "', image = '" + unfromage.Image + "'");
             _dbal.Update(FromageUpdate);
         }
     } 
