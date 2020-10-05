@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -39,6 +41,22 @@ namespace projetfromage
 
             PaysUpdate = ("pays set id ='" + unpays.Id + "' , nom = '" + unpays.Nom + "'");
             _dbal.Update(PaysUpdate);
+        }
+
+        public void InsertFromCSV(string pays)
+        {
+            using (var reader = new StreamReader(pays))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var record = new pays();
+                IEnumerable<pays> records = csv.EnumerateRecords(record);
+
+                foreach (var r in records)
+                {
+                    Console.WriteLine(r.Id + "-" + r.Nom);
+                    this.insert(record);
+                }
+            }
         }
     } 
     #endregion

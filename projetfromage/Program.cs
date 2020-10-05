@@ -14,6 +14,7 @@ namespace projetfromage
             //Connexion dbal
             dbal projetfromage = new dbal();                     
             
+
             //string insert = "pays VALUES ('2','Algérie')";
             //string update = "pays SET id ='3' where id='1'";
             string delete = "pays where id='3'";
