@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -13,17 +14,20 @@ namespace projetfromage
         private dbal _dbal;
         #endregion
 
-        public void DaoFromage(dbal dbal)
+        #region Constructeur
+        public DAOpays(dbal dbal)
         {
             _dbal = dbal;
-        }
+        
+        } 
+        #endregion
 
         #region Autres méthodes
         public void insert(pays unpays)
         {
             string PaysInsert;
 
-            PaysInsert = ("pays(id, nom) values(" + unpays.Id + "," + unpays.Nom +")");
+            PaysInsert = ("pays(id, nom) values(" + unpays.Id + ",'" + unpays.Nom.Replace("'","''") +"')");
             _dbal.Insert(PaysInsert);
         }
 
@@ -39,22 +43,23 @@ namespace projetfromage
         {
             string PaysUpdate;
 
-            PaysUpdate = ("pays set id ='" + unpays.Id + "' , nom = '" + unpays.Nom + "'");
+            PaysUpdate = ("pays set id ='" + unpays.Id + "' , nom = '" + unpays.Nom.Replace("'", "''") + "'");
             _dbal.Update(PaysUpdate);
         }
 
-        public void InsertFromCSV(string pays)
+        public void InsertFromCSV(string chemin)
         {
-            using (var reader = new StreamReader(pays))
+            using (var reader = new StreamReader(chemin))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
+                csv.Configuration.Delimiter = ";";
+                csv.Configuration.PrepareHeaderForMatch = (string header, int index) => header.ToLower();
                 var record = new pays();
                 IEnumerable<pays> records = csv.EnumerateRecords(record);
 
-                foreach (var r in records)
-                {
-                    Console.WriteLine(r.Id + "-" + r.Nom);
-                    this.insert(record);
+                foreach (pays pays in records)
+                {                   
+                    insert(pays);
                 }
             }
         }

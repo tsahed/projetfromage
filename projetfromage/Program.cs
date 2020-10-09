@@ -17,11 +17,17 @@ namespace projetfromage
 
             //string insert = "pays VALUES ('2','Algérie')";
             //string update = "pays SET id ='3' where id='1'";
-            string delete = "pays where id='3'";
+            //string delete = "pays";
 
-            //Fromage.Insert(insert);
+            //projetfromage.Insert(insert);
             //Fromage.Update(update);
-            projetfromage.Delete(delete);
+            //projetfromage.Delete(delete);
+
+            DAOpays undaoPAys = new DAOpays(projetfromage);
+            undaoPAys.InsertFromCSV("D:\\Thalia\\projetfromage\\projetfromage\\pays.csv");
+
+            //DAOFromage undaofromage = new DAOFromage(projetfromage, undaoPAys);
+            //undaofromage.InsertFromCSV("D:\\Thalia\\projetfromage\\projetfromage\\fromage.csv");
         }
     }
 }

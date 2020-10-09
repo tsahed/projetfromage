@@ -17,6 +17,11 @@ namespace projetfromage
             Id = id;
             Nom = nom;
         }
+        public pays()
+        {
+            Id = 0;
+            Nom = "";
+        }
         #endregion
 
         #region Accesseurs

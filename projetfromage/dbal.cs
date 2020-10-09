@@ -84,7 +84,7 @@ namespace projetfromage
         public void Insert(string query)
         {
             string query2 = "INSERT INTO " + query + ";";
-
+            Console.WriteLine(query2);
             //Ouverture de la connexion
             if (this.OpenConnection() == true)
             {

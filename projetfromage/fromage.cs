@@ -22,7 +22,16 @@ namespace projetfromage
             _nom = nom;
             _creation = creation;
             _image = image;
-        } 
+        }
+
+        public fromage()
+        {
+            _id = 0;
+            _pays_origine = "";
+            _nom = "";
+            _creation = "";
+            _image = "";
+        }
         #endregion
 
         #region Accesseurs

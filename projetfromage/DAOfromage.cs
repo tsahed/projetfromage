@@ -1,5 +1,8 @@
-﻿using System;
+﻿using CsvHelper;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Text;
 
 namespace projetfromage
@@ -12,7 +15,7 @@ namespace projetfromage
         #endregion
 
         #region Constructeurs
-        public void DaoFromage(dbal dbal, DAOpays DAOpays)
+        public void DAOfromage(dbal dbal, DAOpays DAOpays)
         {
             _dbal = dbal;
             _DAOpays = DAOpays;
@@ -24,7 +27,7 @@ namespace projetfromage
         {
             string FromageInsert;
 
-            FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine + "," + unfromage.Nom + "," + unfromage.Creation + "," + unfromage.Image +")");
+            FromageInsert = ("fromage(id, pays_origine, nom, creation, image) values(" + unfromage.Id + "," + unfromage.Pays_origine.Replace("'","''") + "," + unfromage.Nom.Replace("'", "''") + "," + unfromage.Creation.Replace("'", "''") + "," + unfromage.Image +")");
             _dbal.Insert(FromageInsert);
         }
 
@@ -40,8 +43,25 @@ namespace projetfromage
         {
             string FromageUpdate;
 
-            FromageUpdate = ("pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine + "' , nom = '" + unfromage.Nom + "', creation = '" + unfromage.Creation + "', image = '" + unfromage.Image + "'");
+            FromageUpdate = ("pays set id ='" + unfromage.Id + "', pays_origine = '" + unfromage.Pays_origine.Replace("'", "''") + "' , nom = '" + unfromage.Nom.Replace("'", "''") + "', creation = '" + unfromage.Creation.Replace("'", "''") + "', image = '" + unfromage.Image + "'");
             _dbal.Update(FromageUpdate);
+        }
+
+        public void InsertFromCSV(string chemin)
+        {
+            using (var reader = new StreamReader(chemin))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                csv.Configuration.Delimiter = ";";
+                csv.Configuration.PrepareHeaderForMatch = (string header, int index) => header.ToLower();
+                var record = new fromage();
+                IEnumerable<fromage> records = csv.EnumerateRecords(record);
+
+                foreach (fromage fromage in records)
+                {
+                    insert(fromage);
+                }
+            }
         }
     } 
     #endregion
