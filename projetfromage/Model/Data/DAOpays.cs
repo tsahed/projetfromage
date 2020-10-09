@@ -5,8 +5,10 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using projetfromage.Model.Business;
+using projetfromage.Model.Data;
 
-namespace projetfromage
+namespace projetfromage.Model.Data
 {
     class DAOpays
     {

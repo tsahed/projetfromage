@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Text;
 using MySql.Data.MySqlClient;
+using projetfromage.Model.Business;
+using projetfromage.Model.Data;
 
-namespace projetfromage
+namespace projetfromage.Model.Data
 {
     class dbal
     {

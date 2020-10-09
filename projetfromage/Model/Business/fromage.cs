@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using projetfromage.Model.Business;
+using projetfromage.Model.Data;
 
-namespace projetfromage
+namespace projetfromage.Model.Business
 {
     class fromage
     {

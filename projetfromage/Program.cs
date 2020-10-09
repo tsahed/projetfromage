@@ -4,8 +4,10 @@ using System;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
+using projetfromage.Model.Business;
+using projetfromage.Model.Data;
 
-namespace projetfromage
+namespace projetfromage.Model
 {
     class Program
     {
