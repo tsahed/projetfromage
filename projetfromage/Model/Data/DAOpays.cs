@@ -65,6 +65,22 @@ namespace projetfromage.Model.Data
                 }
             }
         }
+
+        //public List<pays> SelectAll()
+        //{
+
+        //}
+
+        //public pays SelectByName(string nomPays)
+        //{
+
+        //}
+
+        //public pays SelectById(int idPays)
+        //{
+
+        //}
+        #endregion
     } 
-    #endregion
+   
 }

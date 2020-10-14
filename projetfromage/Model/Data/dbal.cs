@@ -132,7 +132,7 @@ namespace projetfromage.Model.Data
             }
         }
 
-        private DataSet RQuery(string query)
+        public DataSet RQuery(string query)
         {
             DataSet dataset = new DataSet();
             if (this.OpenConnection() == true)
