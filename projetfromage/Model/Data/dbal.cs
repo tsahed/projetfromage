@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Text;
 using MySql.Data.MySqlClient;
@@ -130,6 +131,32 @@ namespace projetfromage.Model.Data
                 this.CloseConnection();
             }
         }
+
+        private DataSet RQuery(string query)
+        {
+            DataSet dataset = new DataSet();
+            if (this.OpenConnection() == true)
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(query, connexion);
+                adapter.Fill(dataset);
+            }
+            return dataset;
+        }
+
+        public DataTable SelectAll(string table)
+        {
+            return this.RQuery("select * from " + table).Tables[0];
+        }
+        public DataTable SelectByField(string table, string fieldTestCondition)
+        {
+            return this.RQuery("select * from " + table + " where " + fieldTestCondition).Tables[0];
+        }
+        public DataRow SelectById(string table, int id)
+        {
+            return this.RQuery("select * from " + table + " where " + id).Tables[0].Rows[0];
+        }
         #endregion
     }
+    
 }
