@@ -66,20 +66,22 @@ namespace projetfromage.Model.Data
             }
         }
 
-        //public List<pays> SelectAll()
-        //{
+        public List<pays> SelectAll()
+        {
+            List<pays> listPays = new List<pays>;
+            listPays.Add(id.pays + nom)
 
-        //}
+        }
 
-        //public pays SelectByName(string nomPays)
-        //{
+        public pays SelectByName(string nomPays)
+        {
 
-        //}
+        }
 
-        //public pays SelectById(int idPays)
-        //{
-
-        //}
+        public pays SelectById(int idPays)
+        {
+            
+        }
         #endregion
     } 
    
