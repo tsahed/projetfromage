@@ -14,16 +14,22 @@ namespace projetfromage.Model.Business
         private string _nom;
         private string _creation;
         private string _image;
+        private string _dureeAffinage;
+        private string _recette;
+        private string _histoire;
         #endregion
 
         #region Constructeurs
-        public fromage(int id, string pays_origine, string nom, string creation, string image)
+        public fromage(int id, string pays_origine, string nom, string creation, string image, string dureeAffinage, string recette, string histoire)
         {
             _id = id;
             _pays_origine = pays_origine;
             _nom = nom;
             _creation = creation;
             _image = image;
+            _dureeAffinage = dureeAffinage;
+            _recette = recette;
+            _histoire = histoire;
         }
 
         public fromage()
@@ -33,7 +39,7 @@ namespace projetfromage.Model.Business
             _nom = "";
             _creation = "";
             _image = "";
-        }
+        }        
         #endregion
 
         #region Accesseurs

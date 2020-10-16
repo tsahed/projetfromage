@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using projetfromage.Model.Business;
 using projetfromage.Model.Data;
+using System.Data;
 
 namespace projetfromage.Model.Data
 {
@@ -68,19 +69,24 @@ namespace projetfromage.Model.Data
 
         public List<pays> SelectAll()
         {
-            List<pays> listPays = new List<pays>;
-            listPays.Add(id.pays + nom)
-
+            List<pays> listPays = new List<pays>();
+            foreach (DataRow r in _dbal.SelectAll("pays").Rows)
+            {
+                listPays.Add(new pays((int)r["id"], (string)r["nom"]));
+            }
+            return listPays;
         }
 
         public pays SelectByName(string nomPays)
         {
-
+            DataRow r = _dbal.SelectByField("pays", "nom like '" + nomPays + "'").Rows[0];
+            return new pays((int)r["id"], (string)r["nom"]);
         }
 
         public pays SelectById(int idPays)
         {
-            
+            DataRow r = _dbal.SelectById("pays", idPays);
+            return new pays((int)r["id"], (string)r["nom"]);
         }
         #endregion
     } 
