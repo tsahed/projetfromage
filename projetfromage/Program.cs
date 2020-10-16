@@ -7,6 +7,7 @@ using System.Threading.Channels;
 using projetfromage.Model.Business;
 using projetfromage.Model.Data;
 using System.Data;
+using System.Collections.Generic;
 
 namespace projetfromage.Model
 {
@@ -40,19 +41,35 @@ namespace projetfromage.Model
             //    Console.WriteLine(leslignes["id"]);
             //}
 
-            foreach (DataRow r in projetfromage.SelectAll("Pays").Rows)
-            {
-                Console.WriteLine(r["nom"]);
-            }          
+            //foreach (DataRow r in projetfromage.SelectAll("Pays").Rows)
+            //{
+            //    Console.WriteLine(r["nom"]);
+            //}          
 
-            foreach (DataRow r in projetfromage.SelectByField("pays", "nom like 'I%'").Rows)
-            {
-                Console.WriteLine(r["nom"]);
-            }          
+            //foreach (DataRow r in projetfromage.SelectByField("pays", "nom like 'I%'").Rows)
+            //{
+            //    Console.WriteLine(r["nom"]);
+            //}          
 
-            DataRow x = projetfromage.SelectById("pays", 38);
-            Console.Write(x["nom"]);
-            Console.ReadLine();
+            //DataRow x = projetfromage.SelectById("pays", 38);
+            //Console.Write(x["nom"]);
+            //Console.ReadLine();          
+
+            //foreach (DataRow r in projetfromage.SelectAll("pays").Rows)
+            //{
+            //    Console.WriteLine(r["id"] + " | " + r["nom"]);
+            //}
+
+
+            //foreach (DataRow r in projetfromage.SelectByField("pays", "nom like '" + "I%" + "'").Rows)
+            //{
+            //    Console.WriteLine(r["id"] + " | " + r["nom"]);
+            //}
+
+            //DataRow x = projetfromage.SelectById("pays", 38);
+            //Console.Write(x["nom"]);
+            //Console.ReadLine();          
+
         }
     }
 }

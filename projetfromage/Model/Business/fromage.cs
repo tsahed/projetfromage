@@ -47,7 +47,10 @@ namespace projetfromage.Model.Business
         public string Pays_origine { get => _pays_origine; set => _pays_origine = value; }
         public string Nom { get => _nom; set => _nom = value; }
         public string Creation { get => _creation; set => _creation = value; }
-        public string Image { get => _image; set => _image = value; } 
+        public string Image { get => _image; set => _image = value; }
+        public string DureeAffinage { get => _dureeAffinage; set => _dureeAffinage = value; }
+        public string Recette { get => _recette; set => _recette = value; }
+        public string Histoire { get => _histoire; set => _histoire = value; }
         #endregion
     }
 }
