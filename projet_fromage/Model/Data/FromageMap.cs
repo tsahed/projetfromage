@@ -9,6 +9,7 @@ namespace projetfromage.Model.Data
     class FromageMap : ClassMap<pays>
     {
        
+
     }
 }
 
