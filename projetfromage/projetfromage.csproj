@@ -10,4 +10,8 @@
     <PackageReference Include="MySql.Data" Version="8.0.21" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\projet_fromage\ModelLayer.csproj" />
+  </ItemGroup>
+
 </Project>

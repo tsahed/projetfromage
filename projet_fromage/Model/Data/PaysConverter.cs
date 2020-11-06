@@ -24,12 +24,14 @@ namespace projetfromage.Model.Data
         #endregion
 
         public override object ConvertFromString(string text)
+           
         {
-            foreach (DataRow r in DAOpays.SelectByField("pays", "nom like '" + text + "'").Rows)
+            foreach (DataRow r in DAOpays.SelectByName("pays", "nom like '" + text + "'").Rows)
                 {
-                    Console.WriteLine(r["id"] + " | " + r["nom"]);
+                    Console.WriteLine(r["id"] + " | " + r["nom"]);            
                 }
-                return PaysConverter.DeserializeObject<P>(text);
+
+            return PaysConverter.DeserializeObject<P>(text);
         }
     }
 }
